@@ -35,7 +35,7 @@ func (h *HelmChart) Process(ns *string, r *Resource) error {
 	// validate chart name
 	chart := h.getName()
 	if chart == "" {
-		return errors.New(fmt.Sprintf("chart validation failed. Here's the chart: %s", h.Chart))
+		return errors.New(fmt.Sprintf("chart validation failed. Here's the chart: %s", chart))
 	}
 
 	// fetch chart if from URL
