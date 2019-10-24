@@ -18,6 +18,11 @@ resource_groups:
     - name: Helm Charts
       helm:
         chart: stable/redis
+    - name: OpenShift Templates
+      openshiftTemplate:
+        template: app-stack.yaml
+        params:
+          APP_NAME: dash-nginx
 `
 
 var testStruct = Inventory{

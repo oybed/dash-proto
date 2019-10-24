@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
@@ -37,11 +36,7 @@ func (h *HelmChart) Process(ns *string, r *Resource) error {
 	}
 	log.Printf("%s\n", stdoutStderr)
 
-	// ensure output directory exists
 	output_dir := filepath.Clean(r.Output + "/" + string(r.Action))
-	if _, err := os.Stat(output_dir); os.IsNotExist(err) {
-		os.Mkdir(output_dir, os.ModePerm)
-	}
 
 	// helm template --output-dir './redis-final' './redis' --set
 	cmdArgs = []string{"template", "--output-dir", output_dir, filepath.Clean(r.Output + "/charts/" + chart)}
